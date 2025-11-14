@@ -1,0 +1,3 @@
+[submodule "src/c_src/libsql"]
+	path = src/c_src/libsql
+	url = https://github.com/tursodatabase/libsql

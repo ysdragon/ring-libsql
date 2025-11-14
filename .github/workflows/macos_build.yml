@@ -1,0 +1,61 @@
+name: macOS Build
+
+on:
+  workflow_call:
+    inputs:
+      ring-version:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+        - os: macos-15-intel
+          arch: amd64
+          name: macos-amd64
+        - os: macos-latest
+          arch: arm64
+          name: macos-arm64
+
+    steps:
+    - name: Install dependencies
+      run: brew install ninja
+
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Checkout ring-libsql
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Checkout Ring Language
+      uses: actions/checkout@v4
+      with:
+        repository: ring-lang/ring
+        path: ring
+        ref: ${{ inputs.ring-version }}
+
+    - name: Build and Install Ring Language
+      run: |
+        cd ring/language
+        cmake . -DCMAKE_BUILD_TYPE=Release -GNinja
+        ninja install
+
+    - name: Set RING environment variable
+      run: echo "RING=$(pwd)/ring" >> $GITHUB_ENV
+
+    - name: Build ring-libsql lib
+      run: |
+        rm -rf lib
+        cmake . -DCMAKE_BUILD_TYPE=Release -GNinja
+        ninja
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ring-libsql-${{ matrix.name }}
+        path: lib
