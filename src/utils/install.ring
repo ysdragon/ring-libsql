@@ -113,9 +113,9 @@ try
 	# Change back to the original directory
 	chdir(cCurrentDir)
 
-	# Check if libsql.ring exists in the exefolder
+	# Check if ring-libsql.ring exists in the exefolder
 	if fexists(exefolder() + "ring-libsql.ring")
-		# Remove the existing libsql.ring file
+		# Remove the existing ring-libsql.ring file
 		remove(exefolder() + "ring-libsql.ring")
 
 		# Write the load command to the libsql.ring file
