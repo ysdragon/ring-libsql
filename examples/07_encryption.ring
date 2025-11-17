@@ -3,11 +3,13 @@
 # NOTE: You need to replace the URL and auth token with your actual Turso credentials
 
 load "libsql.ring"
+load "stdlibcore.ring"
 
 # IMPORTANT: Replace these with your actual Turso database credentials
 remoteURL = "libsql://your-database.turso.io"
 authToken = "your-auth-token-here"
 encryptionKey = "my-encryption-key-32-bytes-long"
+# encryptionKey = StringToBase64("my-encryption-key-32-bytes-long") # Encryption key could be in base64 format
 
 ? "=== Embedded Replica with Encryption ==="
 ? "Note: This example requires valid Turso credentials"
