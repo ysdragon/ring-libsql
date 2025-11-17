@@ -76,7 +76,7 @@ if(NOT EXISTS "${LIBSQL_DIR}/.git")
 	FetchContent_Declare(
 		libsql
 		GIT_REPOSITORY https://github.com/tursodatabase/libsql.git
-		GIT_TAG        libsql-0.9.28
+		GIT_TAG        libsql-0.9.29
 		GIT_SHALLOW    TRUE
 		SOURCE_DIR     "${LIBSQL_DIR}"
 	)
