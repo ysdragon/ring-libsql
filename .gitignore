@@ -1,3 +1,4 @@
 .clangd
-.db
+*.db
+*.db-*
 tests/
