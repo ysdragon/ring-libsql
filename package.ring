@@ -5,11 +5,11 @@ aPackageInfo = [
 	:developer = "ysdragon",
 	:email = "",
 	:license = "MIT License",
-	:version = "1.0.0",
+	:version = "1.0.1",
 	:ringversion = "1.24",
 	:versions = 	[
 		[
-			:version = "1.0.0",
+			:version = "1.0.1",
 			:branch = "master"
 		]
 	],
@@ -21,8 +21,6 @@ aPackageInfo = [
 		]
 	],
 	:files = 	[
-		"lib.ring",
-		"main.ring",
 		".clang-format",
 		"CMakeLists.txt",
 		"examples/01_local_in_memory.ring",
@@ -33,6 +31,8 @@ aPackageInfo = [
 		"examples/06_embedded_replica.ring",
 		"examples/07_encryption.ring",
 		"LICENSE",
+		"lib.ring",
+		"main.ring",
 		"README.md",
 		"src/c_src/ring_libsql.c",
 		"src/libsql.rh",
